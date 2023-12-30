@@ -6,9 +6,10 @@ import { useEffect } from "react";
 import { getAuth, deleteUser } from "firebase/auth";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import '../Style/profile.css'
+import "../Style/profile.css";
 import Loading from "../components/Loading";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 function Profile() {
   const { t, i18n } = useTranslation();
@@ -29,9 +30,7 @@ function Profile() {
   });
 
   if (loading) {
-    return(
-      <Loading/>
-    )
+    return <Loading />;
   }
   if (error) {
     return (
@@ -45,18 +44,24 @@ function Profile() {
     return (
       <>
         <Header />
+        <Helmet>
+          <title>Profile</title>
+        </Helmet>
         <main className="profile">
-
           <div className="profileCard">
-          <h1>{t("Account Details")}</h1>
-            <p>{t("Email")} : {user.email}</p>
-            <p>{t("UserName")} : {user.displayName}</p>
+            <h1>{t("Account Details")}</h1>
             <p>
-            {t("Last Sign-in")} {": at "}
+              {t("Email")} : {user.email}
+            </p>
+            <p>
+              {t("UserName")} : {user.displayName}
+            </p>
+            <p>
+              {t("Last Sign-in")} {": at "}
               <Moment fromNow ago date={user.metadata.lastSignInTime} />
             </p>
             <p>
-            {t("Account Created")}  {": at "}
+              {t("Account Created")} {": at "}
               <Moment fromNow ago date={user.metadata.creationTime} />
             </p>
 

@@ -14,7 +14,6 @@ function Help() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
-
   const { theme } = useContext(DataContext);
   useEffect(() => {
     if (!user && !loading) {
@@ -33,13 +32,12 @@ function Help() {
   if (user && user.emailVerified) {
     return (
       <div className={`App ${theme}`}>
+        <Helmet>
+          <title>Help</title>
+        </Helmet>
 
         <Header />
-        <main>
-          {
-            i18n.language === 'ar' ? "  المساعده" : "Help"
-          }
-        </main>
+        <main>{i18n.language === "ar" ? "  المساعده" : "Help"}</main>
         <Footer />
       </div>
     );

@@ -11,6 +11,7 @@ import Signup from './pages/sign-in/Signup';
 import './i18n';
 import './index.css';
 import App from './pages/App';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 
 const router = createBrowserRouter([
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
   // Edit Task page
   {
     path: "/edit-task/:stringId",
-    element: <EditTask/>,
+    element: <EditTask />,
   },
   // Help Page
   {
@@ -54,6 +55,13 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <DataProvider>
-    <App routerProps={router} />
+    <HelmetProvider>
+
+      <Helmet>
+        <title>Firebase Sign</title>
+      </Helmet>
+
+      <App routerProps={router} />
+    </HelmetProvider>
   </DataProvider>
 );
