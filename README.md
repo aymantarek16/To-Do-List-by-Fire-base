@@ -1,7 +1,9 @@
 # To Do List By Fire Base
 
 A complete project to remember your daily tasks
+
 The project contains two languages [Arabic - English]
+
 In addition to the ability to log in and log out to save your data
 
 ### Technologies Used:
